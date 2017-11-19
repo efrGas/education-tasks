@@ -1,26 +1,27 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace EnumerableTask
 {
 
 	public class Task
 	{
-		/// <summary> Transforms all strings to uppercase</summary>
-		/// <param name="data">source string sequence</param>
-		/// <returns>
-		///   Returns sequence of source strings in uppercase
-		/// </returns>
-		/// <example>
-		///    {"a","b","c"} => { "A", "B", "C" }
-		///    { "A", "B", "C" } => { "A", "B", "C" }
-		///    { "a", "A", "", null } => { "A", "A", "", null }
-		/// </example>
-		public IEnumerable<string> GetUppercaseStrings(IEnumerable<string> data)
-		{
-			throw new NotImplementedException();
-		}
+        /// <summary> Transforms all strings to uppercase</summary>
+        /// <param name="data">source string sequence</param>
+        /// <returns>
+        ///   Returns sequence of source strings in uppercase
+        /// </returns>
+        /// <example>
+        ///    {"a","b","c"} => { "A", "B", "C" }
+        ///    { "A", "B", "C" } => { "A", "B", "C" }
+        ///    { "a", "A", "", null } => { "A", "A", "", null }
+        /// </example>
+        public IEnumerable<string> GetUppercaseStrings(IEnumerable<string> data)
+        {
+            return data.Select(d => string.IsNullOrEmpty(d) ? d : d.ToUpper());
+        }
 
 		/// <summary> Transforms an each string from sequence to its length</summary>
 		/// <param name="data">source strings sequence</param>
@@ -34,7 +35,7 @@ namespace EnumerableTask
 		/// </example>
 		public IEnumerable<int> GetStringsLength(IEnumerable<string> data)
 		{
-			throw new NotImplementedException();
+		    return data.Select(d => string.IsNullOrEmpty(d) ? 0 : d.Length);
 		}
 
 		/// <summary>Transforms int sequence to its square sequence, f(x) = x * x </summary>
